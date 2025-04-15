@@ -127,6 +127,11 @@ Before setting up the application, ensure you have the following installed on yo
 
 ---
 
+## CI/CD Pipeline
+
+The CI/CD pipeline is configured in the `.github/workflows/ci-cd-pipeline.yml` file. It runs automated tests, builds the application, and packages it for deployment.
+
+
 ## Contributing
 
 If you'd like to contribute to this project, feel free to fork the repository and submit a pull request.
