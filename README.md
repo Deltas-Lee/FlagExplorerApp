@@ -46,12 +46,6 @@ Before setting up the application, ensure you have the following installed on yo
    ```
    This will start the Angular application and serve it locally. By default, it will be available at `http://localhost:4200`.
 
-4. **Build the Frontend Application**  
-   To build the application for production, run:
-   ```bash
-   npm run build
-   ```
-   The production-ready files will be available in the `dist/` directory.
 
 ---
 
