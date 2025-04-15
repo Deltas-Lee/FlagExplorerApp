@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlagExplorerAPI", "FlagExplorerAPI\FlagExplorerAPI.csproj", "{F17CF2F8-72D4-40A5-AA36-08E02F19F0CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F17CF2F8-72D4-40A5-AA36-08E02F19F0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17CF2F8-72D4-40A5-AA36-08E02F19F0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17CF2F8-72D4-40A5-AA36-08E02F19F0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17CF2F8-72D4-40A5-AA36-08E02F19F0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D223DCD5-FE09-4C6B-AF34-A3E4B3CF3890}
+	EndGlobalSection
+EndGlobal

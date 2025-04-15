@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+dist/
+.angular/
+.cache/
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.vs/
+.DS_Store
