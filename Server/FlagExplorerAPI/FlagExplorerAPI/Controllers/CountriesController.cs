@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FlagExplorerAPI.Controllers
 {
-    [Route("[controller]")]
+    [Route("")]
     [ApiController]
     public class CountriesController : ControllerBase
     {
@@ -16,16 +16,16 @@ namespace FlagExplorerAPI.Controllers
             _countryService = countryService;
         }
 
-        // GET: countries
-        [HttpGet]
+        // GET: api/countries
+        [HttpGet("countries")]
         public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
             var countries = await _countryService.GetAllCountriesAsync();
             return Ok(countries);
         }
 
-        // GET: countries/{name}
-        [HttpGet("{name}")]
+        // GET: api/coutryDetailsByName
+        [HttpGet("country-details/{name}")]
         public async Task<ActionResult<CountryDetails>> GetCountryDetails(string name)
         {
             var countryDetails = await _countryService.GetCountryDetailsAsync(name);

@@ -1,5 +1,6 @@
 
 using FlagExplorerAPI.Services;
+using System.Net;
 
 namespace FlagExplorerAPI
 {
@@ -9,10 +10,24 @@ namespace FlagExplorerAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // configure TLS protocols
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls13;
+
             // Add services to the container.
             builder.Services.AddHttpClient();
             builder.Services.AddHttpClient<ICountryService, CountryService>();
             builder.Services.AddControllers();
+
+            // add CORS policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -32,6 +47,7 @@ namespace FlagExplorerAPI
 
             app.UseAuthorization();
 
+            app.UseCors();
 
             app.MapControllers();
 
