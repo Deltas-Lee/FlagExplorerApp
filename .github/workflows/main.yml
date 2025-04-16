@@ -22,10 +22,10 @@ jobs:
       run: dotnet restore FlagExplorerApp/Server/FlagExplorerAPI/FlagExplorerAPI/FlagExplorerAPI.csproj
 
     - name: Build
-      run: dotnet build --no-restore FlagExplorerAPI/FlagExplorerAPI.csproj
+      run: dotnet build --no-restore FlagExplorerApp/Server/FlagExplorerAPI/FlagExplorerAPI/FlagExplorerAPI.csproj
 
     # - name: Test
-    #   run: dotnet test --no-build --verbosity normal FlagExplorerApi/FlagExplorerApi.csproj
+    #   run: dotnet test --no-build --verbosity normal FlagExplorerApp/Server/FlagExplorerAPI/FlagExplorerAPI/FlagExplorerAPI.csproj
 
   build-and-test-frontend:
     runs-on: ubuntu-latest
@@ -41,15 +41,15 @@ jobs:
 
     - name: Install dependencies
       run: npm install
-      working-directory: flag-explorer
+      working-directory: FlagExplorerApp/flag-explorer
 
     - name: Build
       run: npm run build --if-present
-      working-directory: flag-explorer
+      working-directory: FlagExplorerApp/flag-explorer
 
     # - name: Test
     #   run: npm test
-    #   working-directory: flag-explorer
+    #   working-directory: FlagExplorerApp/flag-explorer
 
   package:
     runs-on: ubuntu-latest
@@ -61,12 +61,12 @@ jobs:
 
     - name: Package Backend
       run: |
-        dotnet publish FlagExplorerAPI/FlagExplorerAPI.csproj -c Release -o ./publish
+        dotnet publish FlagExplorerApp/Server/FlagExplorerAPI/FlagExplorerAPI/FlagExplorerAPI.csproj -c Release -o ./publish
 
     - name: Package Frontend
       run: |
         mkdir -p ./publish/wwwroot
-        cp -r flag-explorer/dist/flag-explorer/* ./publish/wwwroot/
+        cp -r FlagExplorerApp/flag-explorer/dist/flag-explorer/* ./publish/wwwroot/
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
