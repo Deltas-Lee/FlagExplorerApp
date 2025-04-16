@@ -63,7 +63,7 @@ Before setting up the application, ensure you have the following installed on yo
    ```
 
 3. **Run the Backend API**  
-   Start the backend server:
+   Start the backend server (check the API URL & change if it does not math the below):
    ```bash
    dotnet run
    ```
