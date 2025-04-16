@@ -1,83 +1,39 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FlagExplorerAPI.Models;
+using FlagExplorerAPI.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlagExplorerAPI.Controllers
 {
-    public class CountriesController : Controller
+    [Route("[controller]")]
+    [ApiController]
+    public class CountriesController : ControllerBase
     {
-        // GET: CountriesController
-        public ActionResult Index()
+        private readonly ICountryService _countryService;
+
+        public CountriesController(ICountryService countryService)
         {
-            return View();
+            _countryService = countryService;
         }
 
-        // GET: CountriesController/Details/5
-        public ActionResult Details(int id)
+        // GET: countries
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Country>>> GetCountries()
         {
-            return View();
+            var countries = await _countryService.GetAllCountriesAsync();
+            return Ok(countries);
         }
 
-        // GET: CountriesController/Create
-        public ActionResult Create()
+        // GET: countries/{name}
+        [HttpGet("{name}")]
+        public async Task<ActionResult<CountryDetails>> GetCountryDetails(string name)
         {
-            return View();
-        }
-
-        // POST: CountriesController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            var countryDetails = await _countryService.GetCountryDetailsAsync(name);
+            if (countryDetails == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CountriesController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: CountriesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: CountriesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CountriesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Ok(countryDetails);
         }
     }
 }

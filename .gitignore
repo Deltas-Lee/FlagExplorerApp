@@ -11,3 +11,15 @@ dist/
 .vscode/
 .vs/
 .DS_Store
+
+# Ignore build artifacts
+bin/
+obj/
+
+# Ignore other common files
+*.user
+*.lock
+*.suo
+*.pdb
+*.cache
+*.csproj.user
