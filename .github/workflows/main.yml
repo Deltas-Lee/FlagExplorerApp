@@ -19,10 +19,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore FlagExplorerApp/Server/FlagExplorerApi/FlagExplorerApi.csproj
+      run: dotnet restore FlagExplorerApp/Server/FlagExplorerAPI/FlagExplorerAPI.csproj
 
     - name: Build
-      run: dotnet build --no-restore FlagExplorerApi/FlagExplorerApi.csproj
+      run: dotnet build --no-restore FlagExplorerAPI/FlagExplorerAPI.csproj
 
     # - name: Test
     #   run: dotnet test --no-build --verbosity normal FlagExplorerApi/FlagExplorerApi.csproj
@@ -61,7 +61,7 @@ jobs:
 
     - name: Package Backend
       run: |
-        dotnet publish FlagExplorerApi/FlagExplorerApi.csproj -c Release -o ./publish
+        dotnet publish FlagExplorerAPI/FlagExplorerAPI.csproj -c Release -o ./publish
 
     - name: Package Frontend
       run: |
