@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CountryService } from '../services/country.service';
 import { CountryModel } from '../models/country.model';
 
@@ -9,8 +10,10 @@ import { CountryModel } from '../models/country.model';
 })
 export class CountriesListComponent {
   countries: CountryModel[] = [];
+  searchQuery: string = '';
 
-  constructor(private countryService: CountryService) {}
+
+  constructor(private countryService: CountryService, private router: Router) {}
 
   ngOnInit(): void {
     this.countryService.getCountries().subscribe({
@@ -21,5 +24,10 @@ export class CountriesListComponent {
         console.error('Error fetching countries:', error);
       }
     });
+  }
+
+  onFlagClick(countryName: string): void {
+    const encodedName = encodeURIComponent(countryName.trim());
+    this.router.navigate(['/country-details', encodedName]);
   }
 }

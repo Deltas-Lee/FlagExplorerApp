@@ -1,0 +1,63 @@
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 80px; /* Increase horizontal and vertical spacing */
+  width: 80%; /* Use 80% of the screen width */
+  margin: 0 auto; /* Center the grid horizontally */
+  grid-auto-rows: 1fr; /* Ensure all rows have the same height */
+  align-items: stretch; /* Stretch items to fill the row height */
+}
+
+.country-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: none;
+  padding: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
+  height: 350px; /* Set a fixed height for the cards */
+}
+
+.country-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.country-name {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+img {
+  width: 357.328px; /* Set a fixed width */
+  height: 250px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image fills the dimensions without distortion */
+  border-radius: 4px;
+  margin-bottom: 16px; /* Add spacing below the image */
+}
+
+.navbar {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.logo {
+  text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  .countries-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}

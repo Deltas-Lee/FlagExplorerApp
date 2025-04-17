@@ -1,8 +1,16 @@
-<div *ngFor="let country of countries">
-  <ul>
-    <li>
-      {{country.name.common}}
-    </li>
-  </ul>
-  <img [src]="country.flags.png" alt="{{country.name.common}} flag" />
+<nav class="navbar">
+  <div class="logo">country-explorer.app</div>
+</nav>
+
+<div class="countries-grid">
+  <div
+    *ngFor="let country of countries"
+    class="country-card"
+    (click)="onFlagClick(country.name.common)"
+  >
+    <div class="country-name">
+      {{ country.name.common }}
+    </div>
+    <img [src]="country.flags.svg" alt="{{ country.name.common }} flag" />
+  </div>
 </div>
