@@ -66,7 +66,7 @@ Before setting up the application, ensure you have the following installed on yo
    ```
 
 3. **Run the Backend API**  
-   Start the backend server (check the API URL & change if it does not math the below):
+   Start the backend server (check the API URL & change if it does not match with the below):
    ```bash
    dotnet run
    ```
@@ -75,7 +75,8 @@ Before setting up the application, ensure you have the following installed on yo
 4. **Swagger Documentation**  
    The API includes Swagger documentation for testing and exploring endpoints. Access it at:
    ```
-   https://localhost:5001/swagger
+   https://localhost:5001/swagger or
+   https://localhost:7142/swagger/index
    ```
 
 ---
@@ -117,8 +118,9 @@ Before setting up the application, ensure you have the following installed on yo
 
 ## Folder Structure
 
-- `frontend/`: Contains the Angular frontend code.
-- `backend/`: Contains the .NET 8 API backend code.
+- `Client/`: Contains the Angular frontend code.
+- `Server`: Contains the .NET 8 API backend code.
+- `FlagExplorer.Tests` Contains the unit & integration tests for the api.
 - `node_modules/`: Contains the installed dependencies for the frontend (excluded from version control).
 - `dist/`: Contains the production build files for the frontend (excluded from version control).
 
