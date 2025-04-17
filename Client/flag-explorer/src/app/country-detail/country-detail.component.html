@@ -1,10 +1,17 @@
-<div *ngIf="countryDetail; else errorTemplate">
-  <h2>{{ countryDetail.name.common }}</h2>
-  <img [src]="countryDetail.flags.png" alt="{{ countryDetail.name.common }} flag" />
-  <p>Population: {{ countryDetail.population | number }}</p>
-  <p>Capital: {{ countryDetail.capital }}</p>
-</div>
+<app-header></app-header>
+<div class="container">
+  <div *ngIf="countryDetail; else errorTemplate">
+    <h2>{{ countryDetail.name.common }}</h2>
+    <img [src]="countryDetail.flags.png"
+      alt="{{ countryDetail.name.common }} flag" />
+    <p><b>Population:</b> {{ countryDetail.population | number }}</p>
+    <p><b>Capital:</b> {{ countryDetail.capital.join(', ') }}</p>
+  </div>
 
-<ng-template #errorTemplate>
-  <p *ngIf="errorMessage">{{ errorMessage }}</p>
-</ng-template>
+  <ng-template #errorTemplate>
+    <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+  </ng-template>
+</div>
+<button (click)="fetchCountries(countryDetail?.name?.common || '')">
+  <i class="fas fa-arrow-left"></i> All Countries
+</button> <!-- Back button -->

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CountryService } from '../services/country.service';
 import { CountryModel } from '../models/country.model';
@@ -13,7 +13,7 @@ export class CountriesListComponent {
   searchQuery: string = '';
 
 
-  constructor(private countryService: CountryService, private router: Router) {}
+  constructor(private countryService: CountryService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.countryService.getCountries().subscribe({
@@ -27,7 +27,8 @@ export class CountriesListComponent {
   }
 
   onFlagClick(countryName: string): void {
-    const encodedName = encodeURIComponent(countryName.trim());
-    this.router.navigate(['/country-details', encodedName]);
+    this.router.navigate(['/country-details', encodeURIComponent(countryName.trim())]).then(() => {
+      this.cdr.detectChanges(); // Force Angular to detect changes
+    });
   }
 }

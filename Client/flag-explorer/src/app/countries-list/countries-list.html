@@ -1,12 +1,9 @@
-<nav class="navbar">
-  <div class="logo">country-explorer.app</div>
-</nav>
-
+<app-header></app-header>
 <div class="countries-grid">
   <div
     *ngFor="let country of countries"
     class="country-card"
-    (click)="onFlagClick(country.name.common)"
+    [routerLink]="['/country-details', country.name.common]"
   >
     <div class="country-name">
       {{ country.name.common }}

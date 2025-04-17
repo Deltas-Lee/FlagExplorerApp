@@ -1,7 +1,8 @@
 import { CountryModel } from './../models/country.model';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CountryService } from '../services/country.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-country-detail',
@@ -12,18 +13,23 @@ export class CountryDetailComponent {
 
   countryDetail: CountryModel | null = null;
   errorMessage: string = "";
+  countries: CountryModel[] = [];
 
   constructor (private countryService: CountryService,
-    private route: ActivatedRoute,
+    private route: Router,
+    private cdr: ChangeDetectorRef,
+    private activateRoute: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
-    const countryName = this.route.snapshot.paramMap.get('name');
+    let countryName = this.activateRoute.snapshot.paramMap.get('name');
     console.log('Country name from route:', countryName);
     if (countryName) {
+      countryName = decodeURIComponent(countryName);
       this.countryService.getCountryDetails(countryName).subscribe({
         next: (data) => {
+          console.log('API Response:', data);
           this.countryDetail = data;
         },
         error: (error) => {
@@ -31,8 +37,14 @@ export class CountryDetailComponent {
           this.errorMessage = 'Country details could not be loaded.';
         }
       });
-      } else {
-        console.error('Country name is null');
-      }
+    } else {
+      console.error('Country name is null');
     }
   }
+
+  fetchCountries(countryName: string): void {
+    this.route.navigate(['countries']);
+    this.cdr.detectChanges(); // Force Angular to detect changes
+  }
+
+}

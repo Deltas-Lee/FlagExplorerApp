@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 48px 80px; /* Increase horizontal and vertical spacing */
-  width: 80%; /* Use 80% of the screen width */
+  width: 80%; 
   margin: 0 auto; /* Center the grid horizontally */
   grid-auto-rows: 1fr; /* Ensure all rows have the same height */
   align-items: stretch; /* Stretch items to fill the row height */
@@ -34,20 +34,11 @@
 }
 
 img {
-  width: 357.328px; /* Set a fixed width */
-  height: 250px; /* Set a fixed height */
-  object-fit: cover; /* Ensure the image fills the dimensions without distortion */
+  width: 357.328px; 
+  height: 250px; 
+  object-fit: cover; 
   border-radius: 4px;
-  margin-bottom: 16px; /* Add spacing below the image */
-}
-
-.navbar {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 

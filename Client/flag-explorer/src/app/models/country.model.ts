@@ -1,12 +1,12 @@
 export interface CountryModel {
   name: {
-    common: string;
     official: string;
+    common: string;
   };
-  capital: string [];
-  population: number;
   flags: {
-    png: string;
     svg: string;
+    png: string;
   };
+  capital: string[]; // Array of strings
+  population: number;
 }

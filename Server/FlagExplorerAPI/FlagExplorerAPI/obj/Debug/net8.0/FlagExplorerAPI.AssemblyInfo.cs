@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FlagExplorerAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2813ce5b9b448eac3e57bbca3eee8ec12d4c576")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59375a852236dd02e365d8d7fe70066fdd24fa29")]
 [assembly: System.Reflection.AssemblyProductAttribute("FlagExplorerAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FlagExplorerAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

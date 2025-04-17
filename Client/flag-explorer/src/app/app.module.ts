@@ -7,12 +7,15 @@ import { CountryDetailComponent } from './country-detail/country-detail.componen
 import { CountriesListComponent } from './countries-list/countries-list';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountriesListComponent,
-    CountryDetailComponent
+    CountryDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +26,6 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

@@ -6,6 +6,7 @@ import { CountryDetailComponent } from './country-detail/country-detail.componen
 const routes: Routes = [
   { path: 'countries', component: CountriesListComponent },
   { path: 'country-details/:name', component: CountryDetailComponent },
+  { path: '**', redirectTo: 'countries', pathMatch: 'full' }, // Wildcard route
 ];
 
 @NgModule({
