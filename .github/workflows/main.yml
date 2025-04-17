@@ -69,7 +69,7 @@ jobs:
         cp -r Client/flag-explorer/dist/flag-explorer/* ./publish/wwwroot/
 
     - name: Archive artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: deployment-package
         path: ./publish
