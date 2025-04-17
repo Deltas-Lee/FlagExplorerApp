@@ -1,0 +1,8 @@
+<div *ngFor="let country of countries">
+  <ul>
+    <li>
+      {{country.name.common}}
+    </li>
+  </ul>
+  <img [src]="country.flags.png" alt="{{country.name.common}} flag" />
+</div>
