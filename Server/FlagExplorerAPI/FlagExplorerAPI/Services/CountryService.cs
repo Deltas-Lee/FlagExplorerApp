@@ -1,4 +1,5 @@
 ﻿using FlagExplorerAPI.Models;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace FlagExplorerAPI.Services
@@ -6,9 +7,17 @@ namespace FlagExplorerAPI.Services
     public class CountryService : ICountryService
     {
         private readonly HttpClient _httpClient;
-        public CountryService(HttpClient httpClient)
+        private readonly ILogger<CountryService> _logger;
+
+        public CountryService(HttpClient httpClient, ILogger<CountryService> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
+            _httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue
+            {
+                NoCache = true,
+                NoStore = true
+            };
         }
         public async Task<List<Country>> GetAllCountriesAsync()
         {
@@ -17,11 +26,27 @@ namespace FlagExplorerAPI.Services
             return countries;
         }
 
-        public async Task<CountryDetails> GetCountryDetailsAsync(string name)
+        public async Task<Country> GetCountryAsync(string name)
         {
-            var response = await _httpClient.GetStringAsync($"https://restcountries.com/v3.1/name/{name}");
-            var countryDetails = JsonSerializer.Deserialize<List<CountryDetails>>(response, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return countryDetails?[0];
+            try
+            {
+                // Use a dedicated API endpoint to fetch the country by name
+                var response = await _httpClient.GetStringAsync($"https://restcountries.com/v3.1/name/{name}");
+                var countries = JsonSerializer.Deserialize<List<Country>>(response, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                // Return the first matching country
+                return countries?.FirstOrDefault();
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Error fetching country details");
+                return null;
+            }
+            catch (JsonException ex)
+            {
+                _logger.LogError(ex, "Error deserializing country data");
+                return null;
+            }
         }
     }
 }

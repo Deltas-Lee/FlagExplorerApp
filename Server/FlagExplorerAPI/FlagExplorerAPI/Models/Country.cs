@@ -8,5 +8,9 @@ namespace FlagExplorerAPI.Models
         public Translation Name { get; set; }
         [JsonPropertyName("flags")]
         public Flag Flag { get; set; }
+        [JsonPropertyName("capital")]
+        public string[] Capital { get; set; }
+        [JsonPropertyName("population")]
+        public int Population { get; set; }
     }
 }

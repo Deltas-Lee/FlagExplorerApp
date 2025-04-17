@@ -24,16 +24,18 @@ namespace FlagExplorerAPI.Controllers
             return Ok(countries);
         }
 
-        // GET: api/coutryDetailsByName
+        // GET: api/country-details/{name}
         [HttpGet("country-details/{name}")]
-        public async Task<ActionResult<CountryDetails>> GetCountryDetails(string name)
+        public async Task<ActionResult<Country>> GetCountry(string name)
         {
-            var countryDetails = await _countryService.GetCountryDetailsAsync(name);
-            if (countryDetails == null)
+
+            var country = await _countryService.GetCountryAsync(name);
+            if (country == null)
             {
                 return NotFound();
             }
-            return Ok(countryDetails);
+
+            return Ok(country);
         }
     }
 }
