@@ -8,12 +8,12 @@ namespace FlagExplorerAPI.Models
         /// Gets or sets official name.
         /// </summary>
         [JsonPropertyName("official")]
-        public string Official { get; set; }
+        public string Official { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets common used name.
         /// </summary>
         [JsonPropertyName("common")]
-        public string Common { get; set; }
+        public string Common { get; set; } = string.Empty;
     }
 }
