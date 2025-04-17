@@ -2,6 +2,9 @@
 
 FlagExplorerApp is a full-stack web application that allows users to explore and learn about different country flags. The project consists of a **frontend** built with Angular and a **backend API** developed using .NET 8 (MVC) based on a Swagger document.
 
+![image](https://github.com/user-attachments/assets/791c5073-7f5f-4589-b887-011e63de85e1)
+
+
 ---
 
 ## Prerequisites
